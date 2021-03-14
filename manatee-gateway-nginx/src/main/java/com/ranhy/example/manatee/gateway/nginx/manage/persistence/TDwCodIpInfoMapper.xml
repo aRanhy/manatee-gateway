@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ranhy.example.manatee.gateway.nginx.manage.persistence.TDwCodIpInfoMapper">
+  <resultMap id="BaseResultMap" type="com.ranhy.example.manatee.gateway.nginx.manage.domain.TDwCodIpInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="start_ip_num" jdbcType="BIGINT" property="startIpNum" />
+    <result column="end_ip_num" jdbcType="BIGINT" property="endIpNum" />
+    <result column="start_ip" jdbcType="VARCHAR" property="startIp" />
+    <result column="end_ip" jdbcType="VARCHAR" property="endIp" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="isp" jdbcType="VARCHAR" property="isp" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="src_db" jdbcType="VARCHAR" property="srcDb" />
+    <result column="etl_update_time" jdbcType="TIMESTAMP" property="etlUpdateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, start_ip_num, end_ip_num, start_ip, end_ip, country, province, city, isp, update_time, 
+    src_db, etl_update_time
+  </sql>
+
+
+  <sql id="selectCondition" >
+    <where>
+      <trim suffixOverrides="and">
+        <if test="id != null">
+          and  id = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="startIpNum != null">
+          and  start_ip_num = #{startIpNum,jdbcType=BIGINT}
+        </if>
+        <if test="endIpNum != null">
+          and  end_ip_num = #{endIpNum,jdbcType=BIGINT}
+        </if>
+        <if test="startIp != null">
+          and  start_ip = #{startIp,jdbcType=VARCHAR}
+        </if>
+        <if test="endIp != null">
+          and  end_ip = #{endIp,jdbcType=VARCHAR}
+        </if>
+        <if test="country != null">
+          and  country = #{country,jdbcType=VARCHAR}
+        </if>
+        <if test="province != null">
+          and   province = #{province,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null">
+          and   city = #{city,jdbcType=VARCHAR}
+        </if>
+        <if test="isp != null">
+          and  isp = #{isp,jdbcType=VARCHAR}
+        </if>
+        <if test="srcDb != null">
+          and src_db = #{srcDb,jdbcType=VARCHAR}
+        </if>
+
+
+      </trim>
+    </where>
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dw_cod_ip_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectListByObj" resultMap="BaseResultMap" >
+    select
+      start_ip_num, end_ip_num,  country, province, city
+    from dw_cod_ip_info
+    <include refid="selectCondition" />
+
+    <if test="pagination!=null">
+      limit ${pagination.skip} ,${pagination.pageSize}
+    </if>
+  </select>
+  <select id="selectCountByObj" resultType="java.lang.Integer" >
+    select count(*) from dw_cod_ip_info
+    <include refid="selectCondition"/>
+  </select>
+
+</mapper>

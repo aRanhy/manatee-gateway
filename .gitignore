@@ -1,0 +1,16 @@
+# git ignore.
+
+target
+*.iml
+*.class
+.idea
+.metadata
+*.classpath
+*.settings
+*.project
+*.jar
+*.war
+*.swp
+logs
+.DS_Store
+project

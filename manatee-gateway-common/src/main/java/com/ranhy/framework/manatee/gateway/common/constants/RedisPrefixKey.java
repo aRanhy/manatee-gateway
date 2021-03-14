@@ -12,7 +12,7 @@ import static com.ranhy.framework.manatee.gateway.common.constants.GateWayConsta
 @Getter
 public enum RedisPrefixKey {
 
-    GATEWAY_GLOBAL_PREFIX("catfish-gateway"+REDIS_KEY_SPLIT),
+    GATEWAY_GLOBAL_PREFIX("manatee-gateway"+REDIS_KEY_SPLIT),
     ACL_SERVICE_LIST("acl_service_list"),
     SERVICE_ACL_CONFIG("service_acl_config"),
     ACL_CONFIG_VERSION("acl_config_version"),

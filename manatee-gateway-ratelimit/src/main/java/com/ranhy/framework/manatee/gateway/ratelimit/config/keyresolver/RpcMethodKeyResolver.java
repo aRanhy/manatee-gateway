@@ -1,7 +1,7 @@
 package com.ranhy.framework.manatee.gateway.ratelimit.config.keyresolver;
 
 import com.ranhy.framework.manatee.gateway.common.protocol.Request;
-import com.ranhy.framework.manatee.gateway.common.resolver.CatfishMessageResolver;
+import com.ranhy.framework.manatee.gateway.common.resolver.ManateeMessageResolver;
 import com.ranhy.framework.manatee.gateway.ratelimit.config.properties.RateLimitType;
 import com.ranhy.framework.manatee.gateway.ratelimit.config.supports.RateLimitUtils;
 import org.apache.commons.lang.StringUtils;
@@ -20,7 +20,7 @@ public class RpcMethodKeyResolver implements KeyResolver {
     public boolean apply(HttpServletRequest request, Route route, RateLimitUtils rateLimitUtils,/*not null*/ String matcher) {
 
         return   StringUtils.isBlank(matcher) ||
-                getCatfishRequest(request)
+                getManateeRequest(request)
                         .map(Request::getCommand)
                         .map(command -> StringUtils.isNotBlank(command) && command.trim().equalsIgnoreCase(matcher))
                         .orElse(false);
@@ -29,7 +29,7 @@ public class RpcMethodKeyResolver implements KeyResolver {
     @Override
     public String key(HttpServletRequest request, Route route, RateLimitUtils rateLimitUtils, String matcher) {
 
-        return   getCatfishRequest(request)
+        return   getManateeRequest(request)
                 .map(Request::getCommand)
                 .map(command -> command.trim())
                 .get()  ;
@@ -40,7 +40,7 @@ public class RpcMethodKeyResolver implements KeyResolver {
         return RateLimitType.RPC_METHOD.getLimitType();
     }
 
-    public Optional<Request> getCatfishRequest(HttpServletRequest request){
+    public Optional<Request> getManateeRequest(HttpServletRequest request){
 
         String body = null;
         try {
@@ -48,7 +48,7 @@ public class RpcMethodKeyResolver implements KeyResolver {
         } catch (IOException e) {
             e.printStackTrace();
         }
-         return Optional.ofNullable(CatfishMessageResolver.getInitialize().parseMessage(body)) ;
+         return Optional.ofNullable(ManateeMessageResolver.getInitialize().parseMessage(body)) ;
 
     }
 }

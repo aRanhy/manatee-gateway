@@ -1,12 +1,4 @@
-/**
- * Copyright (c) 2006-2016 Huize Ltd. All Rights Reserved. 
- *  
- * This code is the confidential and proprietary information of   
- * Hzins. You shall not disclose such Confidential Information   
- * and shall use it only in accordance with the terms of the agreements   
- * you entered into with Huize,http://www.huize.com.
- *  
- */   
+
 package com.ranhy.framework.manatee.gateway.ratelimit.config.configuration;
 
 import com.netflix.zuul.ZuulFilter;
@@ -109,14 +101,14 @@ public class RateLimitAutoConfiguration {
         private final UrlPathHelper urlPathHelper = new UrlPathHelper();
 
         @ConditionalOnClass(RedisTemplate.class)
-        @Bean("catfishRateLimiterRedisTemplate")
+        @Bean("manateeRateLimiterRedisTemplate")
         public StringRedisTemplate redisTemplate(final RedisConnectionFactory connectionFactory) {
             return new StringRedisTemplate(connectionFactory);
         }
 
         @Bean
         @ConditionalOnMissingBean(FirewallUtils.class)
-        FirewallUtils firewallUtils(@Qualifier("catfishRateLimiterRedisTemplate") final RedisTemplate redisTemplate){
+        FirewallUtils firewallUtils(@Qualifier("manateeRateLimiterRedisTemplate") final RedisTemplate redisTemplate){
             return new DefaultFirewallUtils(redisTemplate);
         }
 
@@ -146,13 +138,13 @@ public class RateLimitAutoConfiguration {
     public static class RedisConfiguration {
 
         @ConditionalOnClass(RedisTemplate.class)
-        @Bean("catfishRateLimiterRedisTemplate")
+        @Bean("manateeRateLimiterRedisTemplate")
         public StringRedisTemplate redisTemplate(final RedisConnectionFactory connectionFactory) {
             return new StringRedisTemplate(connectionFactory);
         }
 
         @Bean
-        public RateLimiter redisRateLimiter(@Qualifier("catfishRateLimiterRedisTemplate") final RedisTemplate redisTemplate ,final RateLimiterErrorHandler rateLimiterErrorHandler) {
+        public RateLimiter redisRateLimiter(@Qualifier("manateeRateLimiterRedisTemplate") final RedisTemplate redisTemplate ,final RateLimiterErrorHandler rateLimiterErrorHandler) {
             return new RedisRateLimiter(redisTemplate,rateLimiterErrorHandler);
         }
 

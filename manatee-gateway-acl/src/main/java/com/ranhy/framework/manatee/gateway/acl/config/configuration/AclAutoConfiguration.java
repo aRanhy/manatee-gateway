@@ -1,7 +1,7 @@
 package com.ranhy.framework.manatee.gateway.acl.config.configuration;
 
 import com.ranhy.framework.manatee.gateway.acl.config.factory.AclConfigFactory;
-import com.ranhy.framework.manatee.gateway.acl.config.properties.CatfishAclProperties;
+import com.ranhy.framework.manatee.gateway.acl.config.properties.ManateeAclProperties;
 import com.ranhy.framework.manatee.gateway.acl.config.route.AclHttpClientRibbonCommandFactory;
 import com.ranhy.framework.manatee.gateway.acl.config.route.AclRibbonLoadBalancedRetryPolicyFactory;
 import com.ranhy.framework.manatee.gateway.acl.config.supports.AclConfigSync;
@@ -45,13 +45,13 @@ import java.util.Set;
 @Configuration
 @AutoConfigureAfter(AclMarkConfiguration.class)
 @AutoConfigureBefore({ZuulProxyAutoConfiguration.class,RibbonAutoConfiguration.class})
-@ConditionalOnProperty(prefix = CatfishAclProperties.PREFIX, name = "enabled",matchIfMissing = true, havingValue = "true")
+@ConditionalOnProperty(prefix = ManateeAclProperties.PREFIX, name = "enabled",matchIfMissing = true, havingValue = "true")
 public class AclAutoConfiguration {
 
     private final UrlPathHelper urlPathHelper = new UrlPathHelper();
 
     @Bean
-    InterfacePermissionsFilter interfacePermissionsFilter(final CatfishAclProperties properties,
+    InterfacePermissionsFilter interfacePermissionsFilter(final ManateeAclProperties properties,
                                                           final AclMarkConfiguration.AclMark aclMark,
                                                           final AclConfigFactory aclConfigFactory,
                                                           final RouteLocator routeLocator){
@@ -59,18 +59,18 @@ public class AclAutoConfiguration {
    }
 
 
-    @Bean("catfishAclRedisTemplate")
+    @Bean("manateeAclRedisTemplate")
     public StringRedisTemplate redisTemplate(final RedisConnectionFactory connectionFactory) {
         return new StringRedisTemplate(connectionFactory);
     }
 
-    @Bean("catfishAclRedisServe")
-    RedisServe redisServe(@Qualifier("catfishAclRedisTemplate") final StringRedisTemplate redisTemplate){
+    @Bean("manateeAclRedisServe")
+    RedisServe redisServe(@Qualifier("manateeAclRedisTemplate") final StringRedisTemplate redisTemplate){
         return new RedisServe(redisTemplate);
    }
 
    @Bean
-    AclConfigFactory aclConfigFactory(@Qualifier("catfishAclRedisServe") RedisServe redisServe , ConfigurableEnvironment env){
+    AclConfigFactory aclConfigFactory(@Qualifier("manateeAclRedisServe") RedisServe redisServe , ConfigurableEnvironment env){
        PropertyResolver environmentPropertyResolver = new RelaxedPropertyResolver(env);
        String applicationName=environmentPropertyResolver.getProperty(GateWayConstants.APPLICATION_NAME_KEY);
        Preconditions.checkArgument(StringUtils.isNotBlank(applicationName),GateWayConstants.APPLICATION_NAME_KEY+" can not be empty ");
@@ -83,7 +83,7 @@ public class AclAutoConfiguration {
    }
 
    @Bean
-   AclConfigSync aclConfigSync(final CatfishAclProperties properties,
+   AclConfigSync aclConfigSync(final ManateeAclProperties properties,
                                final AclConfigFactory aclConfigFactory  ){
         return new AclConfigSync(properties,aclConfigFactory);
    }

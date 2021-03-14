@@ -13,7 +13,7 @@ public class GateWayConstants {
     public static  final String REDIS_KEY_SPLIT=".";
 
     /**
-     * catfish 异常编码
+     * manatee 异常编码
      */
     public static final String SYSTEM_EXCEPTION = "-1";
 

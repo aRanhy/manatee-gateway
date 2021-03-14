@@ -27,7 +27,7 @@ public class RedisKeyUitl {
      */
     public static String getAclServiceListKey(String gatewayApplicationName){
 
-        return RedisPrefixKey.ACL_SERVICE_LIST.getKey()+GateWayConstants.REDIS_KEY_SPLIT+"catfish-gateway-group";
+        return RedisPrefixKey.ACL_SERVICE_LIST.getKey()+GateWayConstants.REDIS_KEY_SPLIT+"manatee-gateway-group";
 
     }
 

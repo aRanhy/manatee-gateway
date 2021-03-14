@@ -1,7 +1,7 @@
 package com.ranhy.framework.manatee.gateway.ratelimit.config.exception;
 
 import com.ranhy.framework.manatee.gateway.common.constants.RespCodeEnum;
-import com.ranhy.framework.manatee.gateway.common.exception.CatfishGatewayException;
+import com.ranhy.framework.manatee.gateway.common.exception.ManateeGatewayException;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -9,31 +9,31 @@ import org.springframework.http.HttpStatus;
  * @date	2019年8月8日
  */
 
-public class CatfishRateLimitException extends CatfishGatewayException {
+public class ManateeRateLimitException extends ManateeGatewayException {
 
     private static final long serialVersionUID = -6892989869833540741L;
 
 
-    public CatfishRateLimitException(RespCodeEnum respCode) {
+    public ManateeRateLimitException(RespCodeEnum respCode) {
 
         super(respCode,HttpStatus.OK.value());
     }
 
-    public CatfishRateLimitException(RespCodeEnum respCode, int httpStatus) {
+    public ManateeRateLimitException(RespCodeEnum respCode, int httpStatus) {
         super(respCode,httpStatus);
     }
 
-    public CatfishRateLimitException(RespCodeEnum respCode, String  extraMsg) {
+    public ManateeRateLimitException(RespCodeEnum respCode, String  extraMsg) {
 
         super(respCode,HttpStatus.OK.value(),extraMsg);
     }
 
-    public CatfishRateLimitException(RespCodeEnum respCode, Throwable cause) {
+    public ManateeRateLimitException(RespCodeEnum respCode, Throwable cause) {
 
         super(respCode,HttpStatus.OK.value(),cause);
     }
 
-    public CatfishRateLimitException(RespCodeEnum respCode, String extraMsg, Throwable cause) {
+    public ManateeRateLimitException(RespCodeEnum respCode, String extraMsg, Throwable cause) {
         super(respCode,HttpStatus.OK.value(),extraMsg,cause);
     }
 

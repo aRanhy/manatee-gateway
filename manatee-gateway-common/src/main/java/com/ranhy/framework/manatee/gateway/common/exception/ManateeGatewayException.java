@@ -13,7 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 
 @Getter
 @Setter
-public class CatfishGatewayException extends RuntimeException {
+public class ManateeGatewayException extends RuntimeException {
 
 
     private static final long serialVersionUID = -7737482858419075163L;
@@ -26,11 +26,11 @@ public class CatfishGatewayException extends RuntimeException {
     private int httpStatus;
 
 
-    public CatfishGatewayException() {
+    public ManateeGatewayException() {
     }
 
 
-    public CatfishGatewayException(RespCodeEnum respCode ,int httpStatus) {
+    public ManateeGatewayException(RespCodeEnum respCode , int httpStatus) {
         super(respCode.getRespCode() + ":" + respCode.getDescription());
         this.respCode = respCode;
         this.httpStatus = httpStatus;
@@ -38,21 +38,21 @@ public class CatfishGatewayException extends RuntimeException {
 
 
 
-    public CatfishGatewayException(RespCodeEnum respCode ,int httpStatus, String extraMsg) {
+    public ManateeGatewayException(RespCodeEnum respCode , int httpStatus, String extraMsg) {
         super(respCode.getRespCode() + ":" + respCode.getDescription() + ". " + StringUtils.defaultString(extraMsg));
         this.respCode = respCode;
         this.extraMsg = extraMsg;
         this.httpStatus = httpStatus;
     }
 
-    public CatfishGatewayException(RespCodeEnum respCode,int httpStatus, Throwable cause) {
+    public ManateeGatewayException(RespCodeEnum respCode, int httpStatus, Throwable cause) {
         super(respCode.getRespCode() + ":" + respCode.getDescription(), cause);
         this.respCode = respCode;
         this.extraMsg = respCode.getDescription();
         this.httpStatus = httpStatus;
     }
 
-    public CatfishGatewayException(RespCodeEnum respCode,int httpStatus, String extraMsg, Throwable cause) {
+    public ManateeGatewayException(RespCodeEnum respCode, int httpStatus, String extraMsg, Throwable cause) {
         super(respCode.getRespCode() + ":" + respCode.getDescription() + ". " + StringUtils.defaultString(extraMsg), cause);
         this.respCode = respCode;
         this.extraMsg = extraMsg;

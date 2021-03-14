@@ -3,7 +3,7 @@ package com.ranhy.framework.manatee.gateway.ratelimit.filters;
 import com.ranhy.framework.manatee.gateway.common.constants.RespCodeEnum;
 import com.ranhy.framework.manatee.gateway.common.util.JsonUtils;
 import com.ranhy.framework.manatee.gateway.ratelimit.config.configuration.RateLimitMarkConfiguration;
-import com.ranhy.framework.manatee.gateway.ratelimit.config.exception.CatfishRateLimitException;
+import com.ranhy.framework.manatee.gateway.ratelimit.config.exception.ManateeRateLimitException;
 import com.ranhy.framework.manatee.gateway.ratelimit.config.factory.KeyResolverFactory;
 import com.ranhy.framework.manatee.gateway.ratelimit.config.factory.RateLimitPolicyFactory;
 import com.ranhy.framework.manatee.gateway.ratelimit.config.properties.RateLimitProperties;
@@ -76,10 +76,10 @@ public class FirewallPreFilter extends AbstractRateLimitFilter{
                 HttpStatus tooManyRequests = HttpStatus.FORBIDDEN;
                 ctx.setResponseStatusCode(tooManyRequests.value());
                 log.warn("black list detected ip={} , route={} , restricted request", realIp , JsonUtils.beanToJson(route));
-                throw new CatfishRateLimitException(RespCodeEnum.ACCESS_DENIAL, HttpStatus.FORBIDDEN.value());
+                throw new ManateeRateLimitException(RespCodeEnum.ACCESS_DENIAL, HttpStatus.FORBIDDEN.value());
             }
 
-        }catch (CatfishRateLimitException e){
+        }catch (ManateeRateLimitException e){
             throw  e;
         }catch (Exception e){
             e.printStackTrace();

@@ -11,7 +11,7 @@ import java.util.List;
  * @author	 hz18093501 hongyu.ran
  * @date	2019年8月8日
  */
-public class CatfishMessageUtils {
+public class ManateeMessageUtils {
 
     public static String fetchInterfaceName(Class<?> clazz) {
         String result = null;

@@ -14,7 +14,7 @@ import org.springframework.cloud.netflix.zuul.filters.RouteLocator;
 import org.springframework.web.util.UrlPathHelper;
 
 import com.ranhy.framework.manatee.gateway.acl.config.configuration.AclMarkConfiguration;
-import com.ranhy.framework.manatee.gateway.acl.config.properties.CatfishAclProperties;
+import com.ranhy.framework.manatee.gateway.acl.config.properties.ManateeAclProperties;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 
@@ -26,7 +26,7 @@ import com.netflix.zuul.context.RequestContext;
 @RequiredArgsConstructor
 abstract public class AbstractAclFilter extends ZuulFilter{
 
-    final private CatfishAclProperties properties;
+    final private ManateeAclProperties properties;
     final private AclMarkConfiguration.AclMark aclMark;
     final private  RouteLocator routeLocator;
     final private UrlPathHelper urlPathHelper;

@@ -17,10 +17,10 @@ import org.springframework.validation.annotation.Validated;
 @Data
 @Validated
 @NoArgsConstructor
-@ConfigurationProperties(CatfishAclProperties.PREFIX)
-public class CatfishAclProperties {
+@ConfigurationProperties(ManateeAclProperties.PREFIX)
+public class ManateeAclProperties {
 
-    public static final String PREFIX="catfish.acl";
+    public static final String PREFIX="manatee.acl";
 
     private boolean enabled  = true;
 

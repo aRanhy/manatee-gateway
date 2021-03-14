@@ -23,7 +23,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @EnableConfigurationProperties(RateLimitProperties.class)
 @Import({ KeyResolverConfiguration.class, RateLimitMarkConfiguration.class, RateLimitAutoConfiguration.class})
-public @interface EnableCatfishRateLimit {
+public @interface EnableManateeRateLimit {
 
 }
  

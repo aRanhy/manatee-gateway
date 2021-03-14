@@ -26,7 +26,7 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
 @ConfigurationProperties(prefix=RateLimitProperties.PREFIX )
 public class RateLimitProperties {
 
-    public static final String PREFIX = "catfish.zuul.ratelimit";
+    public static final String PREFIX = "manatee.zuul.ratelimit";
 
     /**
      * 限流策略集合
@@ -52,7 +52,7 @@ public class RateLimitProperties {
 
 
     @NotNull
-    @Value("${spring.application.name:catfish-rate-limit}")
+    @Value("${spring.application.name:manatee-rate-limit}")
     private String keyPrefix;
 
     /**

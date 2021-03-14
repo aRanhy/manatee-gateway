@@ -2,7 +2,7 @@ package com.ranhy.framework.manatee.gateway.common.resolver;
 
 import com.ranhy.framework.manatee.gateway.common.constants.MessageConstants;
 import com.ranhy.framework.manatee.gateway.common.protocol.Request;
-import com.ranhy.framework.manatee.gateway.common.util.CatfishMessageUtils;
+import com.ranhy.framework.manatee.gateway.common.util.ManateeMessageUtils;
 import com.ranhy.framework.manatee.gateway.common.util.JsonUtils;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,9 +15,9 @@ import org.apache.commons.lang3.StringUtils;
  */
 @NoArgsConstructor
 @Slf4j
-public class CatfishMessageResolver {
+public class ManateeMessageResolver {
 
-   public static  final   CatfishMessageResolver initialize=new CatfishMessageResolver();
+   public static  final ManateeMessageResolver initialize=new ManateeMessageResolver();
 
     public   Boolean checkMessage(String message) {
         return StringUtils.isNotBlank(message) && message.startsWith("{") && message.endsWith("}")
@@ -35,7 +35,7 @@ public class CatfishMessageResolver {
         if (request.getParameters() != null) {
             length = request.getParameters().length;
         }
-        request.setCommand(CatfishMessageUtils.buildKey(request.getCommand(), length));
+        request.setCommand(ManateeMessageUtils.buildKey(request.getCommand(), length));
         return request;
     }
 
@@ -54,7 +54,7 @@ public class CatfishMessageResolver {
        return request;
     }
 
-    public static CatfishMessageResolver getInitialize(){
+    public static ManateeMessageResolver getInitialize(){
         return initialize;
     }
 

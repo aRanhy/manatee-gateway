@@ -3,7 +3,7 @@ package com.ranhy.example.manatee.gateway.nginx.error;
 
 
 import com.ranhy.framework.manatee.gateway.common.constants.RespCodeEnum;
-import com.ranhy.framework.manatee.gateway.common.exception.CatfishGatewayException;
+import com.ranhy.framework.manatee.gateway.common.exception.ManateeGatewayException;
 import com.ranhy.framework.manatee.gateway.common.protocol.Response;
 import com.ranhy.framework.manatee.gateway.common.util.JsonUtils;
 import com.netflix.zuul.context.RequestContext;
@@ -56,8 +56,8 @@ public class CustomErrorController implements ErrorController {
 
             Map<String, Object> errorAttributes = defaultErrorAttributes.getErrorAttributes(requestAttributes, false);
 
-            if(e != null && e.getCause() instanceof CatfishGatewayException){
-                CatfishGatewayException gatewayException= (CatfishGatewayException) e.getCause();
+            if(e != null && e.getCause() instanceof ManateeGatewayException){
+                ManateeGatewayException gatewayException= (ManateeGatewayException) e.getCause();
                 response.setStatus( gatewayException.getHttpStatus());
                 errorAttributes.put("status",gatewayException.getHttpStatus());
                 errorAttributes.put("error",gatewayException.getMessage());

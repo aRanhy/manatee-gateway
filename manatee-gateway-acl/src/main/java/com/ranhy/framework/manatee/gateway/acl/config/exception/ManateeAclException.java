@@ -1,7 +1,7 @@
 package com.ranhy.framework.manatee.gateway.acl.config.exception;
 
 import com.ranhy.framework.manatee.gateway.common.constants.RespCodeEnum;
-import com.ranhy.framework.manatee.gateway.common.exception.CatfishGatewayException;
+import com.ranhy.framework.manatee.gateway.common.exception.ManateeGatewayException;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -10,31 +10,31 @@ import org.springframework.http.HttpStatus;
  */
 
 
-public class CatfishAclException extends CatfishGatewayException {
+public class ManateeAclException extends ManateeGatewayException {
 
     private static final long serialVersionUID = -6892989869833540741L;
 
 
-    public CatfishAclException(RespCodeEnum respCode) {
+    public ManateeAclException(RespCodeEnum respCode) {
 
         super(respCode,HttpStatus.OK.value());
     }
 
-    public CatfishAclException(RespCodeEnum respCode, int httpStatus) {
+    public ManateeAclException(RespCodeEnum respCode, int httpStatus) {
         super(respCode,httpStatus);
     }
 
-    public CatfishAclException(RespCodeEnum respCode, String  extraMsg) {
+    public ManateeAclException(RespCodeEnum respCode, String  extraMsg) {
 
         super(respCode,HttpStatus.OK.value(),extraMsg);
     }
 
-    public CatfishAclException(RespCodeEnum respCode, Throwable cause) {
+    public ManateeAclException(RespCodeEnum respCode, Throwable cause) {
 
         super(respCode,HttpStatus.OK.value(),cause);
     }
 
-    public CatfishAclException(RespCodeEnum respCode, String extraMsg, Throwable cause) {
+    public ManateeAclException(RespCodeEnum respCode, String extraMsg, Throwable cause) {
         super(respCode,HttpStatus.OK.value(),extraMsg,cause);
     }
 

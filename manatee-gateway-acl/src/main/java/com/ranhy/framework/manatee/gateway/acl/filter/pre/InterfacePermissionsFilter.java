@@ -1,15 +1,15 @@
 package com.ranhy.framework.manatee.gateway.acl.filter.pre;
 
-import com.ranhy.framework.manatee.gateway.acl.config.exception.CatfishAclException;
+import com.ranhy.framework.manatee.gateway.acl.config.exception.ManateeAclException;
 import com.ranhy.framework.manatee.gateway.acl.filter.AbstractAclFilter;
 import com.ranhy.framework.manatee.gateway.acl.config.configuration.AclMarkConfiguration;
 import com.ranhy.framework.manatee.gateway.acl.config.factory.AclConfigFactory;
-import com.ranhy.framework.manatee.gateway.acl.config.properties.CatfishAclProperties;
+import com.ranhy.framework.manatee.gateway.acl.config.properties.ManateeAclProperties;
 import com.ranhy.framework.manatee.gateway.common.constants.GateWayConstants;
 import com.ranhy.framework.manatee.gateway.common.constants.RespCodeEnum;
 import com.ranhy.framework.manatee.gateway.common.protocol.AclConfig;
 import com.ranhy.framework.manatee.gateway.common.protocol.Request;
-import com.ranhy.framework.manatee.gateway.common.resolver.CatfishMessageResolver;
+import com.ranhy.framework.manatee.gateway.common.resolver.ManateeMessageResolver;
 import com.ranhy.framework.manatee.gateway.common.util.JsonUtils;
 import com.netflix.zuul.context.RequestContext;
 import lombok.extern.slf4j.Slf4j;
@@ -32,11 +32,11 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
 @Slf4j
 public class InterfacePermissionsFilter extends AbstractAclFilter {
 
-    final private CatfishAclProperties properties;
+    final private ManateeAclProperties properties;
 
     final private AclConfigFactory aclConfigFactory;
 
-    public InterfacePermissionsFilter(final CatfishAclProperties properties, final AclMarkConfiguration.AclMark aclMark,
+    public InterfacePermissionsFilter(final ManateeAclProperties properties, final AclMarkConfiguration.AclMark aclMark,
                                       final AclConfigFactory aclConfigFactory , final   RouteLocator routeLocator,
                                       final UrlPathHelper urlPathHelper) {
         super(properties, aclMark,routeLocator,urlPathHelper);
@@ -63,7 +63,7 @@ public class InterfacePermissionsFilter extends AbstractAclFilter {
         try {
 
             body = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-            Request requestBody= CatfishMessageResolver.getInitialize().parseMessage(body);
+            Request requestBody= ManateeMessageResolver.getInitialize().parseMessage(body);
             clientApplicationName=request.getHeader(GateWayConstants.CLIENT_APPLICATION_NAME);
 
             if(null != requestBody && StringUtils.isNotBlank(clientApplicationName)){
@@ -72,11 +72,11 @@ public class InterfacePermissionsFilter extends AbstractAclFilter {
 
                 if( !aclConfigFactory.validPermission(aclConfig,clientApplicationName) ){
                     log.debug("the caller {} has been intercepted, service={} interface={} ",clientApplicationName,requestBody.getServiceId(),requestBody.getCommand());
-                    throw new CatfishAclException(RespCodeEnum.ACCESS_DENIAL, HttpStatus.FORBIDDEN.value());
+                    throw new ManateeAclException(RespCodeEnum.ACCESS_DENIAL, HttpStatus.FORBIDDEN.value());
                 }
             }
 
-        }catch (CatfishAclException e){
+        }catch (ManateeAclException e){
             throw e;
         }catch (Exception e){
             e.printStackTrace();

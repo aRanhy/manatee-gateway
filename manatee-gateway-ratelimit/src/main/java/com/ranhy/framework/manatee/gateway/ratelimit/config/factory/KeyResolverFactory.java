@@ -2,7 +2,7 @@ package com.ranhy.framework.manatee.gateway.ratelimit.config.factory;
 
 import com.ranhy.framework.manatee.gateway.common.constants.RespCodeEnum;
 import com.ranhy.framework.manatee.gateway.common.util.JsonUtils;
-import com.ranhy.framework.manatee.gateway.ratelimit.config.exception.CatfishRateLimitException;
+import com.ranhy.framework.manatee.gateway.ratelimit.config.exception.ManateeRateLimitException;
 import com.ranhy.framework.manatee.gateway.ratelimit.config.keyresolver.KeyResolver;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -55,7 +55,7 @@ public class KeyResolverFactory  implements ApplicationContextAware, Initializin
                        Object o=  keyResolverStore.putIfAbsent(limitType,keyResolver); return o==null?true:null;}  )
                     .orElseThrow(()-> {
                         log.error("keyResolver and limitType can not be empty  or  keyResolver can not be repeat");
-                        return new CatfishRateLimitException(RespCodeEnum.PARAM_INVALID);
+                        return new ManateeRateLimitException(RespCodeEnum.PARAM_INVALID);
                     })
         ));
 

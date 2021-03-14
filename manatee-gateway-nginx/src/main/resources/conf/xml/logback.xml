@@ -56,8 +56,7 @@
 	</appender>
 
 	<!-- <logger name="org.springframework.amqp.rabbit.listener" level="INFO"/> -->
-	<logger name="com.huize" level="INFO" />
-	<logger name="com.hzins" level="DEBUG" />
+	<logger name="com.ranhy" level="INFO" />
 	<logger name="org.springframework.cloud" level="INFO"/>
 	<logger name="org.springframework.integration.endpoint.SourcePollingChannelAdapter" level="INFO"/>
 

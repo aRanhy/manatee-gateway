@@ -2,7 +2,7 @@ package com.ranhy.framework.manatee.gateway.acl.config.annotation;
 
 import com.ranhy.framework.manatee.gateway.acl.config.configuration.AclAutoConfiguration;
 import com.ranhy.framework.manatee.gateway.acl.config.configuration.AclMarkConfiguration;
-import com.ranhy.framework.manatee.gateway.acl.config.properties.CatfishAclProperties;
+import com.ranhy.framework.manatee.gateway.acl.config.properties.ManateeAclProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -19,7 +19,7 @@ import java.lang.annotation.Target;
 @Configuration
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@EnableConfigurationProperties(CatfishAclProperties.class)
+@EnableConfigurationProperties(ManateeAclProperties.class)
 @Import({AclMarkConfiguration.class, AclAutoConfiguration.class})
-public @interface EnableCatfishAcl {
+public @interface EnableManateeAcl {
 }

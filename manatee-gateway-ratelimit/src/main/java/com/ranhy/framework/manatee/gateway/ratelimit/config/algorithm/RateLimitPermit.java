@@ -265,7 +265,7 @@ public class RateLimitPermit  extends AbstractGroupServeCount    {
     /**
      * 性能测试
      *
-    public static void catfishLimit(long permitsRatelimit) throws InterruptedException {
+    public static void manateeLimit(long permitsRatelimit) throws InterruptedException {
 
 
         RateLimitPermit rateLimitPermit =  RateLimitPermit.create(1,permitsRatelimit,1);
@@ -277,11 +277,11 @@ public class RateLimitPermit  extends AbstractGroupServeCount    {
                 hastoken++;
             }
         }
-        System.out.println("catfishLimit use time:"+(NANOSECONDS.toMillis(System.nanoTime()-start)  ) + " ms" );
+        System.out.println("manateeLimit use time:"+(NANOSECONDS.toMillis(System.nanoTime()-start)  ) + " ms" );
         System.out.println("single thread hold Permit:"+hastoken);
     }
 
-    public static void multCatfishLimit(int threadCount ,long permitsRatelimit) throws InterruptedException {
+    public static void multmanateeLimit(int threadCount ,long permitsRatelimit) throws InterruptedException {
 
         CountDownLatch countDownLatch=new CountDownLatch(threadCount);
         AtomicInteger hastoken= new AtomicInteger(0);
@@ -316,14 +316,14 @@ public class RateLimitPermit  extends AbstractGroupServeCount    {
 
         }
         countDownLatch.await();
-        System.out.println("catfishLimit use time:"+ NANOSECONDS.toMillis(System.nanoTime()-startTime.get()) +" ms");
+        System.out.println("manateeLimit use time:"+ NANOSECONDS.toMillis(System.nanoTime()-startTime.get()) +" ms");
         System.out.println("mult thread hold Permit:"+hastoken.get());
 
     }
 
     public static void main(String[] args) throws Exception {
-        catfishLimit(100000);
-        multCatfishLimit(2000,1000);
+        manateeLimit(100000);
+        multManateeLimit(2000,1000);
 
     }
 

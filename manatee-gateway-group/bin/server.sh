@@ -31,7 +31,7 @@ cd $(cd "$(dirname "$0")"; pwd)/../
 SHELL_PROG=./server.sh
 
 #程序启动参数相关变量
-MAIN_CLASS=com.ranhy.example.manatee.gateway.group.CatfishGatewayGroupApplication
+MAIN_CLASS=com.ranhy.example.manatee.gateway.group.ManateeGatewayGroupApplication
 #LANG="zh_CN"
 JVM_ARGS="-server -Xms2048m -Xmx2048m -XX:PermSize=128m -XX:MaxPermSize=512m -Xss512k -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=7 -XX:GCTimeRatio=19 -Xnoclassgc -XX:+DisableExplicitGC -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSPermGenSweepingEnabled -XX:+UseCMSCompactAtFullCollection -XX:CMSFullGCsBeforeCompaction=0 -XX:+CMSClassUnloadingEnabled -XX:+CMSParallelRemarkEnabled -XX:CMSInitiatingOccupancyFraction=70 -XX:SoftRefLRUPolicyMSPerMB=0 -Xloggc:./logs/gc.log -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCApplicationStoppedTime -XX:+PrintGCApplicationConcurrentTime -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=./java_pid.hprof"
 

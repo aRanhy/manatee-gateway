@@ -7,7 +7,7 @@ import com.ranhy.framework.manatee.gateway.common.constants.RespCodeEnum;
 import com.ranhy.framework.manatee.gateway.common.util.JsonUtils;
 import com.ranhy.framework.manatee.gateway.ratelimit.config.configuration.RateLimitMarkConfiguration;
 import com.ranhy.framework.manatee.gateway.ratelimit.config.entity.Rate;
-import com.ranhy.framework.manatee.gateway.ratelimit.config.exception.CatfishRateLimitException;
+import com.ranhy.framework.manatee.gateway.ratelimit.config.exception.ManateeRateLimitException;
 import com.ranhy.framework.manatee.gateway.ratelimit.config.factory.KeyResolverFactory;
 import com.ranhy.framework.manatee.gateway.ratelimit.config.factory.RateLimitPolicyFactory;
 import com.ranhy.framework.manatee.gateway.ratelimit.config.properties.RateLimitProperties;
@@ -135,7 +135,7 @@ public class RateLimitPreFilter extends AbstractRateLimitFilter implements Appli
                                                 firewallUtils.pushBlockValue(key);
                                             }
                                             log.warn("restricted request key={} ,policy={}",key, JsonUtils.beanToJson(policy));
-                                            throw new CatfishRateLimitException(RespCodeEnum.TOO_MANY_REQUEST, HttpStatus.TOO_MANY_REQUESTS.value());
+                                            throw new ManateeRateLimitException(RespCodeEnum.TOO_MANY_REQUEST, HttpStatus.TOO_MANY_REQUESTS.value());
 
                                         }
                                     })
@@ -145,7 +145,7 @@ public class RateLimitPreFilter extends AbstractRateLimitFilter implements Appli
                     )
             );
 
-        }catch (CatfishRateLimitException e){
+        }catch (ManateeRateLimitException e){
             throw  e;
         }catch (Exception e){
             e.printStackTrace();

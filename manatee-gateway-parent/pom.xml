@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.huize.framework.catfish</groupId>
+	<groupId>com.ranhy.framework.manatee</groupId>
 	<artifactId>manatee-gateway-parent</artifactId>
 	<packaging>pom</packaging>
 
-	<version>3.0.0-SNAPSHOT</version>
+	<version>1.0.0-RELEASE</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -27,7 +27,7 @@
 		<maven.enforcer.plugin.version>3.0.0-M2</maven.enforcer.plugin.version>
 
 
-		<manatee-agent.version>3.0.0-SNAPSHOT</manatee-agent.version>
+		<manatee-agent.version>1.0.0-RELEASE</manatee-agent.version>
 
 	</properties>
 
@@ -129,17 +129,17 @@
 			</dependency>
 
 			<dependency>
-				<groupId>com.huize.framework.catfish</groupId>
+				<groupId>com.ranhy.framework.manatee</groupId>
 				<artifactId>manatee-gateway-common</artifactId>
 				<version>${manatee-agent.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.huize.framework.catfish</groupId>
+				<groupId>com.ranhy.framework.manatee</groupId>
 				<artifactId>manatee-gateway-acl</artifactId>
 				<version>${manatee-agent.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.huize.framework.catfish</groupId>
+				<groupId>com.ranhy.framework.manatee</groupId>
 				<artifactId>manatee-gateway-ratelimit</artifactId>
 				<version>${manatee-agent.version}</version>
 			</dependency>

@@ -10,16 +10,16 @@ manatee-gateway-common    公共模块<br>
 manatee-gateway-parent    父模块<br> 
 
 ## 网关鉴权设计<br> 
-![]（https://github.com/aRanhy/manatee-gateway/doc/网关鉴权.png）
+![](https://github.com/aRanhy/manatee-gateway/blob/master/doc/网关鉴权.png)
 
 ## 网关限流功能对比<br> 
-![](https://github.com/aRanhy/manatee-gateway/doc/网关限流功能对比.png)
+![](https://github.com/aRanhy/manatee-gateway/blob/master/doc/网关限流功能对比.png)
 
 ## 限流中间件算法对比<br> 
-![](https://github.com/aRanhy/manatee-gateway/doc/限流中间件算法对比.png)
+![](https://github.com/aRanhy/manatee-gateway/blob/master/doc/限流中间件算法对比.png)
 
 ##限流锁优化<br> 
-![](https://github.com/aRanhy/manatee-gateway/doc/限流锁优化.png)
+![](https://github.com/aRanhy/manatee-gateway/blob/master/doc/限流锁优化.png)
 
 ## 属性说明
 manatee.zuul.ratelimit.policies 限流策略集合<br> 

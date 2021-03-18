@@ -1,3 +1,4 @@
+
 # manatee-gateway
 
 ## 目录对应说明<br> 
@@ -9,7 +10,7 @@ manatee-gateway-common    公共模块<br>
 manatee-gateway-parent    父模块<br> 
 
 ## 网关鉴权设计<br> 
-![](https://github.com/aRanhy/manatee-gateway/doc/网关鉴权.png)
+![]（https://github.com/aRanhy/manatee-gateway/doc/网关鉴权.png）
 
 ## 网关限流功能对比<br> 
 ![](https://github.com/aRanhy/manatee-gateway/doc/网关限流功能对比.png)
@@ -31,5 +32,8 @@ manatee.zuul.ratelimit.policies[0].configs 限流维度集合<br>
 manatee.zuul.ratelimit.policies[0].configs[0].rateLimitType 限流维度（目前支持application、url、ip、http_method 四个维度，维度可自由搭配组合使用 ，支持自定义限流维度）<br> 
 manatee.zuul.ratelimit.policies[0].configs[0].match 匹配项（主要用于指定某一个特定值限流，如某一个ip或者url限流，不配置默认对该维度下所有请求限流）<br> 
 
-## 接入文档参考<br> 
+## 接入文档<br> 
 https://github.com/aRanhy/manatee-gateway/doc/网关限流接入说明.doc
+
+## 技术博客<br> 
+https://segmentfault.com/a/1190000020745218

@@ -1,13 +1,13 @@
-
 # manatee-gateway
 
-## 目录对应说明<br> 
-manatee-gateway-acl       网关鉴权模块<br> 
-manatee-gateway-ratelimit 网关限流模块<br> 
-manatee-gateway-group     服务组间鉴权案例<br> 
-manatee-gateway-nginx     nginx下游实现区域限流案例<br> 
-manatee-gateway-common    公共模块<br> 
-manatee-gateway-parent    父模块<br> 
+## 目录<br> 
+├─manatee-gateway
+│ ├─manatee-gateway-acl                 网关鉴权模块<br> 
+│ ├─manatee-gateway-ratelimit       网关限流模块<br> 
+│ ├─manatee-gateway-group           服务组间鉴权案例<br> 
+│ ├─manatee-gateway-nginx nginx 下游实现区域限流案例<br> 
+│ ├─manatee-gateway-common       公共模块<br> 
+│ ├─manatee-gateway-parent           父模块<br> 
 
 ## 网关鉴权设计<br> 
 ![](https://github.com/aRanhy/manatee-gateway/blob/master/doc/网关鉴权.png)
@@ -18,8 +18,9 @@ manatee-gateway-parent    父模块<br>
 ## 限流中间件算法对比<br> 
 ![](https://github.com/aRanhy/manatee-gateway/blob/master/doc/限流中间件算法对比.png)
 
-##限流锁优化<br> 
+## 限流锁优化<br> 
 ![](https://github.com/aRanhy/manatee-gateway/blob/master/doc/限流锁优化.png)
+
 
 ## 属性说明
 manatee.zuul.ratelimit.policies 限流策略集合<br> 

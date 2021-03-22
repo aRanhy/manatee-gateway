@@ -1,7 +1,7 @@
 # manatee-gateway
 
 ## 目录<br> 
-├─manatee-gateway
+├─manatee-gateway<br> 
 │ ├─manatee-gateway-acl                 网关鉴权模块<br> 
 │ ├─manatee-gateway-ratelimit       网关限流模块<br> 
 │ ├─manatee-gateway-group           服务组间鉴权案例<br> 
